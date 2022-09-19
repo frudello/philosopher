@@ -6,7 +6,7 @@
 /*   By: frudello <frudello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:29:04 by frudello          #+#    #+#             */
-/*   Updated: 2022/09/19 18:54:21 by frudello         ###   ########.fr       */
+/*   Updated: 2022/09/19 19:43:48 by frudello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,7 @@ int main (int ac, char **av)
 	}
 	init_fork(dati);
 	init_mutex(dati);
+	init_tread(dati);
+	philo = malloc(sizeof(t_philo) * dati->parse->n_p)
+	init_philo(philo);
 }

@@ -6,7 +6,7 @@
 /*   By: frudello <frudello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:44:26 by frudello          #+#    #+#             */
-/*   Updated: 2022/09/19 18:52:09 by frudello         ###   ########.fr       */
+/*   Updated: 2022/09/19 19:35:56 by frudello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ typedef struct s_dati
 {
 	int				kill;
 	int				**fork;
-	t_parse			*parse;
 	size_t			timing;
+	t_parse			*parse;
+	pthread_t		**p_phtread;
 	pthread_mutex_t	*Mkill;
 	pthread_mutex_t	*Mprint;
 	pthread_mutex_t	**Mfork;

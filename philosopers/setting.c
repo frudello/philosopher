@@ -6,7 +6,7 @@
 /*   By: frudello <frudello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:34:20 by frudello          #+#    #+#             */
-/*   Updated: 2022/09/19 19:25:30 by frudello         ###   ########.fr       */
+/*   Updated: 2022/09/19 19:46:45 by frudello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_mutex(t_dati *dati)
 	dati->Mprint = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(Mprint, NULL);
 	dati->Mfork = malloc(sizeof(pthread_mutex_t) * (dati->parse->n_p + 1));
-		while (i < dati->parse->n_p)
+	while (i < dati->parse->n_p)
 	{
 		dati->Mfork[i] = malloc(sizeof(pthread_mutex_t));
 		pthread_mutex_init(dati->Mfork[i][0], NULL);
@@ -64,3 +64,23 @@ void	init_mutex(t_dati *dati)
 	dati->Mfork[i] = dati->Mfork[0];
 }
 
+void	init_tread(t_dati *dati)
+{
+	int	i;
+
+	i = -1;
+	dati->p_phtread = malloc(sizeof(phtread_t *) * (dati->parse->n_p + 1));
+	while (++i < dati->parse->n_p)
+		dati->p_phtread[i] = malloc(sizeof(pthread_t));
+}
+
+void	init_philo(t_philo **philo, t_dati *dati)
+{
+	int	i;
+
+	i = 0;
+	while(i < dati->parse->n_p)
+	{
+		philo->id_p[i] = i + 1;
+	}
+}
