@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frudello <frudello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 12:29:04 by frudello          #+#    #+#             */
-/*   Updated: 2022/09/19 18:54:21 by frudello         ###   ########.fr       */
+/*   Created: 2022/09/19 14:45:10 by frudello          #+#    #+#             */
+/*   Updated: 2022/09/19 16:56:01 by frudello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main (int ac, char **av)
+int	check_argoments(int ac, char **av)
 {
-	t_philo	**philo;
-	t_dati	*dati;
+	int	i;
+	int t;
 
-	dati = malloc(sizeof(t_dati));
-	dati->parse = malloc(sizeof(t_parse));
-	if (ac < 5 || ac > 6)
-		printf("Wrong number of argoments");
-	if (init_struct(ac, av, dati->parse))
+	i = 1;
+	while (i != ac)
 	{
-		free(dati->parse);
-		free(dati);
+		t = 0;
+		while(av[i][t])
+		{
+			if(!(av[i][t] == ' ' || (av[i][t] >= '0' && av[i][t] <= '9')))
+				return (1);
+			t++;
+		}
+		i++;
 	}
-	init_fork(dati);
-	init_mutex(dati);
+	return (0);
 }

@@ -4,9 +4,9 @@ CC=gcc
 
 FLAGS=-Wall -Werror -Wextra #-fsanitize=address -g3
 
-SRC=utils.c start.c init_or_destroy63.c utils2.c utils3.c
+SRC=utils.c check.c setting.c
 
-MAIN=philosopher.c
+MAIN=philo.c
 
 OBJS=$(SRC:.c=.o)
 MAINO=$(MAIN:.c=.o)
