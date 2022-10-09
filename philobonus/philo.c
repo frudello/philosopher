@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frudello <frudello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:45:10 by frudello          #+#    #+#             */
-/*   Updated: 2022/09/19 16:56:01 by frudello         ###   ########.fr       */
+/*   Created: 2022/09/27 15:52:35 by frudello          #+#    #+#             */
+/*   Updated: 2022/09/27 15:56:13 by frudello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_argoments(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	int	i;
-	int t;
+	t_config	demo;
 
-	i = 1;
-	while (i != ac)
+	if (!check_inputs(argc, argv))
 	{
-		t = 0;
-		while(av[i][t])
-		{
-			if(!(av[i][t] == ' ' || (av[i][t] >= '0' && av[i][t] <= '9')))
-				return (1);
-			t++;
-		}
-		i++;
+		printf("Error inputs ! \n");
+		return (FALSE);
 	}
+	if (create_philos(&demo, argv) == FALSE)
+		return (1);
+	if (create_forks(&demo) == FALSE)
+		return (1);
+	if (demo.num_philo > 1)
+		create_threads(&demo);
+	else
+		one_philo(&demo, 0);
+	ft_free(&demo);
 	return (0);
 }

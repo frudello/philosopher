@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frudello <frudello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 12:29:04 by frudello          #+#    #+#             */
-/*   Updated: 2022/09/19 19:43:48 by frudello         ###   ########.fr       */
+/*   Created: 2022/09/27 16:32:20 by frudello          #+#    #+#             */
+/*   Updated: 2022/10/04 18:18:43 by frudello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main (int ac, char **av)
+void	check_meal(t_config *in)
 {
-	t_philo	**philo;
-	t_dati	*dati;
+	static int	meals;
 
-	dati = malloc(sizeof(t_dati));
-	dati->parse = malloc(sizeof(t_parse));
-	if (ac < 5 || ac > 6)
-		printf("Wrong number of argoments");
-	if (init_struct(ac, av, dati->parse))
+	if (meals == in->num_of_eat -1)
 	{
-		free(dati->parse);
-		free(dati);
+		free(in->pid);
+		exit (1);
 	}
-	init_fork(dati);
-	init_mutex(dati);
-	init_tread(dati);
-	philo = malloc(sizeof(t_philo) * dati->parse->n_p)
-	init_philo(philo);
+	else if (meals < in->num_of_eat)
+		meals += 1;
 }
